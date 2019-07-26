@@ -1,0 +1,12 @@
+table,tbody,thead {
+    width: 100% !important;
+}
+colgroup {
+    position: absolute;
+    width: 100% !important;
+    display: flex;
+}
+col {
+    flex: 1;
+    text-align: center;
+}

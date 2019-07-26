@@ -1,0 +1,18 @@
+.service-title {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    height: 56px;
+    line-height: 56px;
+}
+.service-info {
+    margin-left: 10px;
+    font-size: 14px;
+}
+.service-button {
+    margin-right:10px;
+}
+.service-button .el-button--primary{
+    background-color: lightblue;
+    border-color: lightblue;
+}

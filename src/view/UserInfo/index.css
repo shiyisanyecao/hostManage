@@ -1,0 +1,17 @@
+.user-title {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    height: 56px;
+    line-height: 56px;
+}
+.user-info {
+    font-size: 14px;
+}
+.user-button {
+    margin-right: 10px;
+}
+.user-button .el-button--primary{
+    background-color: lightblue;
+    border-color: lightblue;
+}

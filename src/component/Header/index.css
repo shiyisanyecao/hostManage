@@ -1,0 +1,17 @@
+.header-com {
+    background-color: lightblue;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.header-com span {
+    padding-right: 20px;
+    font-size: 10px;
+}
+.header-com span .router-link-active{
+    color: #fff;
+    text-decoration: none;
+}
