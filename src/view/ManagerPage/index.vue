@@ -7,9 +7,15 @@
                 </span>
                 <router-view></router-view>
             </el-tab-pane>
-            <el-tab-pane label="manage">
+            <el-tab-pane name="manage">
                 <span slot="label">
                     主机管理
+                </span>
+                <router-view></router-view>
+            </el-tab-pane>
+            <el-tab-pane name="service">
+                <span slot="label">
+                    服务管理
                 </span>
                 <router-view></router-view>
             </el-tab-pane>
@@ -21,7 +27,7 @@
 require('!style-loader!css-loader!./index.css');
 // import HeaderCom from '../../component/Header'
 import UserInfo from '../UserInfo'
-import HostInfo from '..//HostInfo'
+import HostInfo from '../HostInfo'
 export default {
     data() {
         return {
@@ -38,8 +44,10 @@ export default {
         paneClick(tab,event) {
             if(this.activeName == 'user') {
                 this.$router.push({path:'/managerpage/user'})
-            } else {
+            } else if(this.activeName == 'manage'){
                 this.$router.push({path:'/managerpage/manage'})
+            } else {
+                this.$router.push({path:'/managerpage/service'})
             }
         }
     }

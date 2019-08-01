@@ -11,7 +11,8 @@
     padding-right: 20px;
     font-size: 10px;
 }
-.header-com span .router-link-active{
+.header-com span {
     color: #fff;
-    text-decoration: none;
+    cursor:pointer;
+    /*text-decoration: none;*/
 }

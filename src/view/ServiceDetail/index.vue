@@ -105,7 +105,7 @@ export default {
                         this.$alert('删除成功');
                 this.getServiceData();
             } else {
-                this.$alert('删除失败')
+                this.$alert('删除失败');
             }
             })
         },
@@ -125,12 +125,14 @@ export default {
             this.addExternalMaps.status = true;
         },
         deleteMapClick(row) {
-            this.$alert('确认删除?', '', {
-                confirmButtonText: '确定',
-                callback: () => {
-                this.deleteCommit(row.id)
-            }
-        });
+            this.$alert('确认删除吗？','',{
+                confirmButtonText: '确定？',
+                cancelButtonText: '取消'
+            }).then(() => {
+                this.deleteCommit(row.id);
+        }).catch(() => {
+
+            })
         },
         deleteCommit(id) {
             let params = new URLSearchParams();

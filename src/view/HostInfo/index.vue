@@ -12,13 +12,19 @@
             </el-table-column>
             <el-table-column prop="manager" label="主机管理员">
             </el-table-column>
-            <el-table-column prop="passwordInfo" label="主机密码">
-            </el-table-column>
             <el-table-column prop="ip" label="主机IP">
+            </el-table-column>
+            <el-table-column type="expand" label="服务信息">
+                <template slot-scope="props">
+                    <el-table :data="props.row.services" align="center">
+                        <el-table-column align="center" prop="name" label="服务名"></el-table-column>
+                        <el-table-column align="center" prop="port" label="端口号"></el-table-column>
+                    </el-table>
+                </template>
             </el-table-column>
             <el-table-column label="操作" center>
                 <template slot-scope="scope">
-                    <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+                    <el-button @click="handleClick(scope.row)" type="text" size="small">服务</el-button>
                     <el-button @click="editClick(scope.row)" type="text" size="small">编辑</el-button>
                     <el-button @click="deleteClick(scope.row)" type="text" size="small">删除</el-button>
                 </template>
@@ -48,7 +54,6 @@
             return {
                 isFirstEnter:false,//是否为第一次进入页面
                 currentRow: null,
-                isFirstEnter:false,
                 bgColor: {
                     backgroundColor:'lightblue'
                 },
@@ -131,9 +136,11 @@
             deleteClick(row) {
                 this.$alert('确认删除吗？','',{
                     confirmButtonText: '确定？',
-                    callback: () => {
-                        this.deleteCommit(row.id);
-                }
+                    cancelButtonText: '取消'
+                }).then(() => {
+                    this.deleteCommit(row.id);
+            }).catch(() => {
+
                 })
             },
             refresh(val) {
@@ -173,12 +180,12 @@
             handleSizeChange: function (pagesize) {
                 this.pagesize = pagesize;
                 this.getHostData();
-                console.log('每页显示的数据',this.pagesize)  //每页下拉显示数据
+                console.log('每页显示的数据',this.pagesize);  //每页下拉显示数据
             },
             handleCurrentChange: function(currentPage){
                 this.currentPage = currentPage;
                 this.getHostData();
-                console.log('第n页',this.currentPage)  //点击第几页
+                console.log('第n页',this.currentPage);  //点击第几页
             }
         },
         mounted() {

@@ -88,10 +88,12 @@
             deleteClick(row) {
                 this.$alert('确认删除吗？','',{
                     confirmButtonText: '确定？',
-                    callback: () => {
+                    cancelButtonText: '取消'
+            }).then(() => {
                     this.deleteCommit(row.id);
-            }
-            })
+                }).catch(() => {
+
+                })
             },
             getUserData() {
                 let params = new URLSearchParams();

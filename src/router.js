@@ -39,6 +39,14 @@ export default new Router({
                         keepAlive: true, //此组件需要被缓存
                         isBack: false //判断是否是通过返回按钮进入页面的
                     },
+                },{
+                    path: 'service',
+                    name: 'service',
+                    component: (resolve) => require(['./view/ServiceInfo/index.vue'],resolve),
+                    meta: {
+                        keepAlive: true, //此组件需要被缓存
+                        isBack: false //判断是否是通过返回按钮进入页面的
+                    },
                 }
             ]
          },
@@ -46,10 +54,26 @@ export default new Router({
             path: '/userpage',
             name: 'userpage',
             component: (resolve) => require(['./view/UserPage/index.vue'],resolve),
-            meta: {
-                keepAlive: true, //此组件需要被缓存
-                isBack: false //判断是否是通过返回按钮进入页面的
+            redirect: { name: 'information' },
+            children: [
+            {
+                path: 'information',
+                name: 'information',
+                component: (resolve) => require(['./view/Information/index.vue'],resolve),
+                meta: {
+                    keepAlive: true, //此组件需要被缓存
+                    isBack: false //判断是否是通过返回按钮进入页面的
+                },
+            },{
+                path: 'connect',
+                name: 'connect',
+                component: (resolve) => require(['./view/Connect/index.vue'],resolve),
+                meta: {
+                    keepAlive: true, //此组件需要被缓存
+                    isBack: false //判断是否是通过返回按钮进入页面的
+                },
             }
+        ]
         },
         {
             path: '/hostdetailinfo',

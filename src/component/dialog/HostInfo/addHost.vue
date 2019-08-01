@@ -69,7 +69,7 @@ export default {
                     callback: () => {
                     this.$refs.addform.resetFields();
                     this.$emit('refresh','')
-                    this.$router.push({ name: 'hostinfo' })
+                    this.$router.push({ name: 'manage' })
             }
             });
             }

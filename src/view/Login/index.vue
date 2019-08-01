@@ -32,7 +32,7 @@ export default {
                     { require:true, message: '用户名不能为空', trigger: 'blur' }
                 ],
                 password: [
-                    { require:true, message: '用户名不能为空', trigger: 'blur' }
+                    { require:true, message: '密码不能为空', trigger: 'blur' }
                 ],
                 status: [
                     { require:true, message: '请选择身份', trigger: 'change' }
@@ -62,7 +62,7 @@ export default {
                                     localStorage.setItem('status',this.logForm.status);
                                     localStorage.setItem('username',this.logForm.username);
                                     localStorage.setItem('password',this.logForm.password);
-                                    this.$router.push({ name: 'managerpage' })
+                                    this.$router.push({ name: 'userpage' })
                         } else if(res.data == 0) {
                                     this.$alert('用户不存在')
                         }else {
@@ -76,7 +76,7 @@ export default {
                             localStorage.setItem('status',this.logForm.status);
                             localStorage.setItem('username',this.logForm.username);
                             localStorage.setItem('password',this.logForm.password);
-                            this.$router.push({ name: 'userpage' })
+                            this.$router.push({ name: 'managerpage' })
                         }else if(res.data == 0) {
                                 this.$alert('用户不存在')
                             }else {

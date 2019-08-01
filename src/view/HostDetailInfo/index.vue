@@ -153,12 +153,14 @@
             },
             // 删除服务
             deleteService(row) {
-                this.$alert('确认删除?', '', {
-                    confirmButtonText: '确定',
-                    callback: () => {
-                        this.deleteCommit(row.id)
-                }
-            });
+                this.$alert('确认删除吗？','',{
+                    confirmButtonText: '确定？',
+                    cancelButtonText: '取消'
+                }).then(() => {
+                    this.deleteCommit(row.id);
+            }).catch(() => {
+
+                })
             },
             getHostService() {
                 let params = new URLSearchParams();
