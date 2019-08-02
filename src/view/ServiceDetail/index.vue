@@ -19,7 +19,6 @@
                     </el-table-column>
                     <el-table-column label="操作" center>
                         <template slot-scope="scope">
-                            <el-button @click="handleMapClick(scope.row)" type="text" size="small">查看</el-button>
                             <el-button @click="editMapClick(scope.row)" type="text" size="small">编辑</el-button>
                             <el-button @click="deleteMapClick(scope.row)" type="text" size="small">删除</el-button>
                         </template>

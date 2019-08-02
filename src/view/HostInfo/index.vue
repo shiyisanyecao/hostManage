@@ -7,7 +7,33 @@
                 <!--<el-button type="primary" size="mini" @click="back()">返回</el-button>-->
             </div>
         </div>
-        <el-table :data="tableData" highlight-current-row @current-change="handleCurrentOne" :header-cell-style="bgColor" border style="width: 100%;overflow: hidden">
+        <!--<table id="table-cell" border="1" cellpadding="0" cellspacing="0" class="table-cell">-->
+            <!--<tr>-->
+                <!--<tr><th rowspan="2">主机名</th>-->
+                <!--<th rowspan="2">主机管理员</th>-->
+                <!--<th rowspan="2">主机IP</th>-->
+                <!--<th colspan="2">服务信息</th>-->
+                <!--<th rowspan="2">操作</th></tr>-->
+                <!--<th>服务名</th><th>端口号</th>-->
+            <!--</tr>-->
+            <!--<template v-for="(item,index) in tableData">-->
+            <!--<tr>-->
+                <!--<tr>-->
+                    <!--<td :rowspan="3">{{item.name}}</td>-->
+                    <!--<td :rowspan="3">{{item.manager}}</td>-->
+                    <!--<td :rowspan="3">{{item.ip}}</td>-->
+                    <!--<td>1121</td>-->
+                    <!--<td>1122</td>-->
+                    <!--<td :rowspan="3">删除</td>-->
+                <!--</tr>-->
+                <!--<tr><td>2222</td>-->
+                <!--<td>1221</td></tr>-->
+                <!--<td>2333</td>-->
+                <!--<td>3333</td>-->
+            <!--</tr>-->
+            <!--</template>-->
+        <!--</table>-->
+        <el-table :data="tableData" :span-method="colspanMethod" highlight-current-row @current-change="handleCurrentOne" :header-cell-style="bgColor" border style="width: 100%;overflow: hidden">
             <el-table-column prop="name" label="主机名">
             </el-table-column>
             <el-table-column prop="manager" label="主机管理员">
@@ -15,8 +41,9 @@
             <el-table-column prop="ip" label="主机IP">
             </el-table-column>
             <el-table-column type="expand" label="服务信息">
-                <template slot-scope="props">
-                    <el-table :data="props.row.services" align="center">
+                <template slot-scope="scope">
+                    <!--{{scope.row.services}}-->
+                    <el-table :data="scope.row.services" align="center">
                         <el-table-column align="center" prop="name" label="服务名"></el-table-column>
                         <el-table-column align="center" prop="port" label="端口号"></el-table-column>
                     </el-table>
@@ -52,6 +79,8 @@
     export default {
         data() {
             return {
+                service: [],
+                data: {},
                 isFirstEnter:false,//是否为第一次进入页面
                 currentRow: null,
                 bgColor: {
@@ -116,6 +145,9 @@
             // 使用keep-alive后（2+次）进入不会再执行此钩子函数
         },
         methods: {
+            colspanMethod({ row,column,rowIndex,columnIndex }) {
+
+            },
             handleCurrentOne(val) {
                 this.currentRow = val;
             },
@@ -186,10 +218,14 @@
                 this.currentPage = currentPage;
                 this.getHostData();
                 console.log('第n页',this.currentPage);  //点击第几页
+            },
+            setTableData() {
+                let tb = document.getElementById('table-cell');
             }
         },
         mounted() {
             this.getHostData();
+            this.setTableData();
         }
     }
 </script>

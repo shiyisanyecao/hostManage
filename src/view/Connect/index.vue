@@ -1,11 +1,11 @@
 <template>
     <div>
         <el-table :data="tableData" highlight-current-row @current-change="handleCurrentOne" :header-cell-style="bgColor" border style="width: 100%;overflow: hidden">
-            <el-table-column prop="name" label="主机名">
+            <el-table-column prop="name" label="服务名">
             </el-table-column>
-            <el-table-column prop="manager" label="主机管理员">
+            <el-table-column prop="port" label="服务端口号">
             </el-table-column>
-            <el-table-column prop="ip" label="主机IP">
+            <el-table-column prop="host.name" label="主机名">
             </el-table-column>
             <el-table-column type="expand" label="服务信息">
                 <template slot-scope="props">
@@ -45,7 +45,7 @@
             getConnectData() {
                 axios.get('http://localhost:8080/user/getUser')
                     .then(res => {
-                        console.log(res)
+                        this.tableData = res.data.data.services;
                 })
             }
         },

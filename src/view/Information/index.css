@@ -1,0 +1,14 @@
+table {
+    /*border-right: 1px solid;*/
+    /*border-bottom: 1px solid;*/
+}
+table tr th {
+    background-color: lightblue;
+    /*border-top: 1px solid;*/
+    /*border-left: 1px solid;*/
+}
+table tr td {
+   text-align: center;
+    /*border-top: 1px solid;*/
+    /*border-left: 1px solid;*/
+}
