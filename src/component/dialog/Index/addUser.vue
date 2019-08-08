@@ -72,9 +72,11 @@
                         confirmButtonText: '确定',
                         callback: () => {
                         this.$refs.addform.resetFields();
-                    this.$emit('refresh','')
+                    this.$emit('refresh','');
                 }
                 });
+                }else {
+                        this.$alert('添加失败');
                 }
             })
             },

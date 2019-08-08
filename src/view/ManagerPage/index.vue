@@ -19,6 +19,12 @@
                 </span>
                 <router-view></router-view>
             </el-tab-pane>
+            <el-tab-pane name="historyConnect">
+                <span slot="label">
+                    历史连接
+                </span>
+                <router-view></router-view>
+            </el-tab-pane>
         </el-tabs>
     </div>
 </template>
@@ -46,8 +52,10 @@ export default {
                 this.$router.push({path:'/managerpage/user'})
             } else if(this.activeName == 'manage'){
                 this.$router.push({path:'/managerpage/manage'})
-            } else {
+            } else if(this.activeName == 'service'){
                 this.$router.push({path:'/managerpage/service'})
+            } else {
+                this.$router.push({path:'/managerpage/historyConnect'})
             }
         }
     }

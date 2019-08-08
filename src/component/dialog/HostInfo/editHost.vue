@@ -16,7 +16,7 @@
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="editSubmit('editinfo')">完成</el-button>
-                    <el-button @click="editReset('editinfo')">重置</el-button>
+                    <el-button @click="editReset">重置</el-button>
                 </el-form-item>
             </el-form>
         </el-dialog>
@@ -49,8 +49,8 @@
             handleClose(done){
                 done();
             },
-            editReset(editform) {
-                this.$refs.editform.resetFields();
+            editReset() {
+                this.$refs.editinfo.resetFields();
             },
             postEditMess() {
                 let params = new URLSearchParams();

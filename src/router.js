@@ -47,6 +47,14 @@ export default new Router({
                         keepAlive: true, //此组件需要被缓存
                         isBack: false //判断是否是通过返回按钮进入页面的
                     },
+                },{
+                    path: 'historyConnect',
+                    name: 'historyConnect',
+                    component: (resolve) => require(['./view/AllHistoryConnect/index.vue'],resolve),
+                    meta: {
+                        keepAlive: true, //此组件需要被缓存
+                        isBack: false //判断是否是通过返回按钮进入页面的
+                    },
                 }
             ]
          },
@@ -71,9 +79,17 @@ export default new Router({
                 meta: {
                     keepAlive: true, //此组件需要被缓存
                     isBack: false //判断是否是通过返回按钮进入页面的
-                },
+                }
+            },{
+                path: 'history',
+                name: 'history',
+                component: (resolve) => require(['./view/HistoryConnect/index.vue'],resolve),
+                meta: {
+                    keepAlive: true, //此组件需要被缓存
+                    isBack: false //判断是否是通过返回按钮进入页面的
+                }
             }
-        ]
+            ]
         },
         {
             path: '/hostdetailinfo',

@@ -15,3 +15,22 @@
     background-color: lightblue;
     border-color: lightblue;
 }
+.table-cell {
+    border-color: #EBEEF5;
+}
+.table-cell tr th,.table-cell th {
+    padding: 10px 0;
+    background-color: lightblue;
+}
+.table-cell tr td {
+    height: 48px;
+    line-height: 48px;
+    font-size: 13px;
+    text-align: center;
+    color: #606266;
+}
+.table-cell tr td span {
+    color: #409EFF;
+    cursor: pointer;
+    font-size: 12px;
+}

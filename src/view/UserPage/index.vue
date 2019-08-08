@@ -7,11 +7,17 @@
           </span>
           <router-view></router-view>
       </el-tab-pane>
-      <el-tab-pane label="connect">
+      <el-tab-pane name="hasConnect">
           <span slot="label">
-              查看连接
+              服务连接
           </span>
           <router-view></router-view>
+      </el-tab-pane>
+      <el-tab-pane name="history">
+          <span slot="label">
+              历史连接
+          </span>
+        <router-view></router-view>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -22,15 +28,17 @@
   export default {
       data() {
           return {
-            activeName: ''
+            activeName: this.$route.name
           }
       },
     methods: {
       paneClick(tab,event) {
         if(this.activeName == 'information') {
           this.$router.push({path:'/userpage/information'})
-        } else {
+        } else if(this.activeName == 'hasConnect'){
           this.$router.push({path:'/userpage/connect'})
+        } else if(this.activeName == 'history'){
+           this.$router.push({path:'/userpage/history'})
         }
       }
     }

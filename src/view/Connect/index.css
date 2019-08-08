@@ -1,0 +1,18 @@
+.user-connect{
+    border-color: #EBEEF5;
+}
+table tr th,table th {
+    background-color: lightblue;
+    padding: 10px 0;
+}
+table tr td {
+    text-align: center;
+    height: 46px;
+    line-height: 46px;
+    font-size: 13px;
+}
+.connect-unConnect {
+    font-size: 12px;
+    color: lightblue;
+    cursor: pointer;
+}

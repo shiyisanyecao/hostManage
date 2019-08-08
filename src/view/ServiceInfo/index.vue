@@ -1,11 +1,21 @@
 <template>
     <div>
         <el-table :data="tableData" highlight-current-row @current-change="handleCurrentOne" :header-cell-style="bgColor" border style="width: 100%;overflow: hidden">
-            <el-table-column prop="serviceName" label="服务名">
-            </el-table-column>
             <el-table-column prop="hostName" label="主机名">
             </el-table-column>
+            <el-table-column prop="hostIp" label="主机IP">
+            </el-table-column>
+            <el-table-column prop="serviceName" label="服务名">
+            </el-table-column>
+            <el-table-column prop="servicePort" label="服务端口">
+            </el-table-column>
+            <el-table-column prop="externalIp" label="外网IP">
+            </el-table-column>
+            <el-table-column prop="externalPort" label="外网端口">
+            </el-table-column>
             <el-table-column prop="loginName" label="用户名">
+            </el-table-column>
+            <el-table-column prop="userIp" label="用户IP">
             </el-table-column>
             <el-table-column prop="status" label="状态">
             </el-table-column>
