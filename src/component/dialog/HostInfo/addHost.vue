@@ -23,6 +23,7 @@
     </div>
 </template>
 <script>
+    import global from '../../../global.vue'
 import axios from 'axios'
 export default {
     data() {
@@ -60,7 +61,7 @@ export default {
             params.append('name',this.addform.name);
             params.append('manager',this.addform.manager);
             params.append('passwordInfo',this.addform.passwordInfo);
-            axios.post('http://localhost:8080/host/addHost',params)
+            axios.post(global.path+'/host/addHost',params)
                 .then((res)=>{
                 // console.log(res,'datas')
                 if(res.data) {

@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import global from '../../global.vue';
 require('!style-loader!css-loader!./index.css');
 import addExternalMaps from '../../component/dialog/ServiceDetail/addExternalMaps'
 import editExternalMaps from '../../component/dialog/ServiceDetail/editExternalMaps'
@@ -98,7 +99,7 @@ export default {
             let params = new URLSearchParams();
             params.append('userId',row.id);
             params.append('serviceId',this.service.id);
-            axios.post('http://localhost:8080/service/deleteUserFromService',params)
+            axios.post(global.path+'/service/deleteUserFromService',params)
                 .then((res) => {
                     if(res.data) {
                         this.$alert('删除成功');
@@ -136,7 +137,7 @@ export default {
         deleteCommit(id) {
             let params = new URLSearchParams();
             params.append('externalMapId',id);
-            axios.post('http://localhost:8080/externalMap/deleteExternalMap',params)
+            axios.post(global.path+'/externalMap/deleteExternalMap',params)
                 .then((res) => {
                     if(res.data) {
                 this.getServiceData();
@@ -155,7 +156,7 @@ export default {
         getServiceData() {
             let params = new URLSearchParams();
             params.append('serviceId',this.$route.params.serviceId);
-            axios.post('http://localhost:8080/service/getServiceById',params)
+            axios.post(global.path+'/service/getServiceById',params)
                 .then(res => {
                     // console.log(res,'...///');
                     this.externalMaps = res.data.externalMaps;

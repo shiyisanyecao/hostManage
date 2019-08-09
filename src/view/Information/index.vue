@@ -30,6 +30,7 @@
 </template>
 
 <script>
+    import global from '../../global.vue';
     import axios from 'axios';
     require('!style-loader!css-loader!./index.css');
     export default {
@@ -55,7 +56,7 @@
                 if(this.form.name){
                     let params = new URLSearchParams();
                     params.append('name',this.form.name);
-                    axios.post('http://localhost:8080/user/updateName',params)
+                    axios.post(global.path+'/user/updateName',params)
                         .then(res => {
                             if(res.data.data) {
                                 this.$alert('编辑用户名成功');
@@ -66,7 +67,7 @@
                 }
             },
             getInfo() {
-                axios.get('http://localhost:8080/user/getUser')
+                axios.get(global.path+'/user/getUser')
                     .then(res => {
                     this.form = res.data.data;
                 })

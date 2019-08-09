@@ -23,6 +23,7 @@
     </div>
 </template>
 <script>
+    import global from '../../../global.vue'
     import axios from 'axios'
     export default {
         data() {
@@ -60,7 +61,7 @@
                 params.append('manager',this.editinfo.manager);
                 params.append('passwordInfo',this.editinfo.passwordInfo);
                 // console.log(params,'kkk')
-                axios.post('http://localhost:8080/host/updateHost',params)
+                axios.post(global.path+'/host/updateHost',params)
                     .then((res)=>{
                     if(res.data == 1) {
                     this.$alert('修改成功', '', {

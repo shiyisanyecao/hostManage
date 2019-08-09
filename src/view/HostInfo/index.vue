@@ -74,6 +74,7 @@
 </template>
 
 <script>
+    import global from '../../global.vue';
     import addHostDialog from '../../component/dialog/HostInfo/addHost'
     import editHostDialog from '../../component/dialog/HostInfo/editHost'
     require('!style-loader!css-loader!./index.css');
@@ -161,7 +162,7 @@
             deleteCommit(id) {
                 let params = new URLSearchParams();
                 params.append('hostId',id);
-                axios.post('http://localhost:8080/host/deleteHost',params)
+                axios.post(global.path+'/host/deleteHost',params)
                     .then(res => {
                     this.getHostData();
             })
@@ -204,7 +205,7 @@
               let params = new URLSearchParams();
               params.append('page',this.currentPage);
               params.append('size',this.pagesize);
-              axios.post('http://localhost:8080/host/getHostsByPage',params)
+              axios.post(global.path+'/host/getHostsByPage',params)
                   .then((res)=>{
                       this.tableData = res.data.content;
                       this.total = res.data.totalElements;

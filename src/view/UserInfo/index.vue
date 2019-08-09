@@ -33,6 +33,7 @@
 </template>
 
 <script>
+    import global from '../../global.vue';
     import editPass from '../../component/dialog/UserInfo/editPassword'
     import addUser from '../../component/dialog/Index/addUser'
     require('!style-loader!css-loader!./index.css')
@@ -80,7 +81,7 @@
             deleteCommit(id) {
                 let params = new URLSearchParams();
                 params.append('userId',id);
-                axios.post('http://localhost:8080/user/deleteUser',params)
+                axios.post(global.path+'/user/deleteUser',params)
                     .then(res => {
                     this.getUserData();
                 })
@@ -99,7 +100,7 @@
                 let params = new URLSearchParams();
                 params.append('page',this.currentPage);
                 params.append('size',this.pagesize);
-                axios.post('http://localhost:8080/user/getUserByPage',params)
+                axios.post(global.path+'/user/getUserByPage',params)
                     .then(res => {
                     this.userinfo = res.data.content;
                 this.total = res.data.totalElements;

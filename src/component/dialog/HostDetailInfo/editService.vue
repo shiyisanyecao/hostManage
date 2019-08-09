@@ -17,6 +17,7 @@
     </div>
 </template>
 <script>
+    import global from '../../../global.vue'
 import axios from 'axios'
 export default {
     data() {
@@ -45,7 +46,7 @@ export default {
             params.append('name',this.editserviceform.name);
             params.append('port',this.editserviceform.port);
             params.append('id',this.editserviceform.id);
-            axios.post('http://localhost:8080/service/updateService',params)
+            axios.post(global.path+'/service/updateService',params)
                 .then((res)=>{
                 if(res.data==1) {
                 this.$alert('编辑服务成功', '', {

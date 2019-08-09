@@ -5,6 +5,7 @@
     </div>
 </template>
 <script>
+    import global from '../../global.vue'
     import axios from 'axios';
     require('!style-loader!css-loader!./index.css');
     export default {
@@ -14,7 +15,7 @@
         },
         methods: {
             deleteUser() {
-                axios.get('http://localhost:8080/user/quit')
+                axios.get(global.path+'/user/quit')
                     .then(res => {
                     if(res.data.data) {
                         this.$alert('退出成功');
@@ -25,7 +26,7 @@
                 })
             },
             deleteManager() {
-                axios.get('http://localhost:8080/host/quit')
+                axios.get(global.path+'/host/quit')
                     .then(res => {
                     if(res.data) {
                     this.$alert('退出成功');

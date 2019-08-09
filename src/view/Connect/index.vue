@@ -61,6 +61,7 @@
 </template>
 
 <script>
+    import global from '../../global.vue';
     import axios from 'axios';
     require('!style-loader!css-loader!./index.css');
     export default {
@@ -72,16 +73,28 @@
                 currentRow: null,
                 bgColor: {
                     backgroundColor: 'lightblue'
-                }
+                },
+                timer: true,
             }
         },
         methods:{
-            unConnect(index,i) {
+            unConnect(index,i){
+                let that = this;
+                if(!this.timer) {
+                    return;
+                }
+                this.timer = false;
+                setTimeout(function() {
+                    that.connOrUn(index,i);
+                },1000);
+            },
+            connOrUn(index,i) {
                 if(this.tableData[index].ulNodeSASList[i].activeUserHostAccess) {
                     let params = new URLSearchParams();
                     params.append('serviceId',this.tableData[index].ulNodeSASList[i].service.id)
-                    axios.post('http://localhost:8080/user/breakService',params)
+                    axios.post(global.path+'/user/breakService',params)
                         .then(res => {
+                        this.timer = true;
                         if(res.data.data) {
                             this.$alert('断开成功');
                             this.getConnectData();
@@ -92,8 +105,9 @@
                 } else {
                     let params = new URLSearchParams();
                     params.append('serviceId',this.tableData[index].ulNodeSASList[i].service.id)
-                    axios.post('http://localhost:8080/user/linkService',params)
+                    axios.post(global.path+'/user/linkService',params)
                         .then(res => {
+                        this.timer = true;
                         if(res.data.data) {
                             this.$alert('连接成功');
                             this.getConnectData();
@@ -107,7 +121,7 @@
                 this.currentRow = val;
             },
             getConnectData() {
-                axios.get('http://localhost:8080/user/getUserAndStatusMergeByHost')
+                axios.get(global.path+'/user/getUserAndStatusMergeByHost')
                     .then(res => {
                     this.tableData = res.data.data.ulmNodeHosts;
                 this.loginName = res.data.data.loginName;

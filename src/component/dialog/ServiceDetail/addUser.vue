@@ -18,6 +18,7 @@
     </div>
 </template>
 <script>
+    import global from '../../../global.vue'
     import axios from 'axios';
     export default {
         data() {
@@ -35,7 +36,7 @@
             loginNameSearch() {
                 let params = new URLSearchParams();
                 params.append('loginName',this.searchforlogin);
-                axios.post('http://localhost:8080/user/getUserByLoginName',params)
+                axios.post(global.path+'/user/getUserByLoginName',params)
                     .then(res => {
                         this.userinfo = res.data;
                 })
@@ -73,7 +74,7 @@
                 let params = new URLSearchParams();
                 params.append('serviceId',this.serviceInfo.id);
                 params.append('userId',row.id);
-                axios.post('http://localhost:8080/service/addUserToService',params)
+                axios.post(global.path+'/service/addUserToService',params)
                     .then(res => {
                         if(res.data == 1) {
                             this.$alert('添加成功');

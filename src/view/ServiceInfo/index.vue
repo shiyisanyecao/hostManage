@@ -36,6 +36,7 @@
 </template>
 
 <script>
+    import global from '../../global.vue';
     import axios from 'axios';
     export default {
         data() {
@@ -54,7 +55,7 @@
             unConnect(row) {
                 let params = new URLSearchParams();
                 params.append('activeUserHostAccessId',row.id);
-                axios.post('http://localhost:8080/service/brokenLink',params)
+                axios.post(global.path+'/service/brokenLink',params)
                     .then(res => {
                         if(res.data == true) {
                             this.$alert('断开成功')
@@ -80,7 +81,7 @@
                 let params = new URLSearchParams();
                 params.append('page',this.currentPage);
                 params.append('size',this.pageSize);
-                axios.post('http://localhost:8080/activeUserHostAccess/getCurrentLinkingByPage',params)
+                axios.post(global.path+'/activeUserHostAccess/getCurrentLinkingByPage',params)
                     .then(res => {
                     this.tableData = res.data.content;
                     this.total = res.data.totalElements;

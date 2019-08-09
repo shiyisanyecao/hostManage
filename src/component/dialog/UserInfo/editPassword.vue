@@ -9,6 +9,7 @@
 </template>
 
 <script>
+    import global from '../../../global.vue'
     import axios from 'axios';
     export default {
         data() {
@@ -25,7 +26,7 @@
                     let params = new URLSearchParams();
                     params.append('newPassword',this.confirmPass);
                     params.append('userId',this.userId);
-                    axios.post('http://localhost:8080/user/updateUserPassword',params)
+                    axios.post(global.path+'/user/updateUserPassword',params)
                         .then(res => {
                             if(res.data == 1) {
                                 this.$alert('更新成功');

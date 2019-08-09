@@ -23,11 +23,12 @@
         </el-table>
         <edit-service-dialog :editServiceVisible.sync="editServiceVisible" :editserviceform.sync="editserviceform"></edit-service-dialog>
         <add-service-dialog :addServiceVisible.sync="addServiceVisible" v-on:getAddService="getAddService"></add-service-dialog>
-        <see-connect-dialog :connect.sync="connect" :connectInfo.sync="connectInfo"></see-connect-dialog>
+        <see-connect-dialog :connect.sync="connect" :connectInfo.sync="connectInfo" v-on:borken="borken"></see-connect-dialog>
     </div>
 </template>
 
 <script>
+    import global from '../../global.vue';
     import seeConnectDialog from '../../component/dialog/HostDetailInfo/seeConnect'
     import addServiceDialog from '../../component/dialog/HostDetailInfo/addService'
     import editServiceDialog from '../../component/dialog/HostDetailInfo/editService'
@@ -108,11 +109,14 @@
             // 使用keep-alive后（2+次）进入不会再执行此钩子函数
         },
         methods: {
+            borken(val) {
+                this.getHostService();
+            },
             seeConnect(row) {
                 this.connect.status = true;
                 let params = new URLSearchParams();
                 params.append('serviceId',row.id);
-                axios.post('http://localhost:8080/service/getRunningAUHAByServiceId', params)
+                axios.post(global.path+'/service/getRunningAUHAByServiceId', params)
                     .then(res => {
                     this.connectInfo = res.data;
             })
@@ -145,7 +149,7 @@
             deleteCommit(id) {
                 let params = new URLSearchParams();
                 params.append('serviceId',id);
-                axios.post('http://localhost:8080/service/deleteService',params)
+                axios.post(global.path+'/service/deleteService',params)
                     .then(res => {
                         // console.log(res,'hahaha');
                         this.getHostService();
@@ -165,7 +169,7 @@
             getHostService() {
                 let params = new URLSearchParams();
                 params.append('hostId',this.$route.params.hostId);
-                axios.post('http://localhost:8080/host/getHostById',params)
+                axios.post(global.path+'/host/getHostById',params)
                     .then((res) => {
                         this.tableData = res.data.services;
                         this.host.id = res.data.id;

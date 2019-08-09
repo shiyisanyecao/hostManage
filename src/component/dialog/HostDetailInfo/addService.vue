@@ -17,6 +17,7 @@
     </div>
 </template>
 <script>
+    import global from '../../../global.vue'
     import axios from 'axios'
     export default {
         data() {
@@ -45,7 +46,7 @@
                 params.append('name',this.addserviceform.name);
                 params.append('port',this.addserviceform.port);
                 params.append('hostId',this.$route.params.hostId);
-                axios.post('http://localhost:8080/service/addService',params)
+                axios.post(global.path+'/service/addService',params)
                     .then((res)=>{
                     if(res.data == -1) {
                     alert('已经存在该服务,编辑失败','')

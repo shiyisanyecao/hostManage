@@ -34,6 +34,7 @@
 </template>
 
 <script>
+    import global from '../../global.vue';
     import axios from 'axios';
     export default {
         data() {
@@ -56,7 +57,7 @@
                 let params = new URLSearchParams();
                 params.append('page',this.currentPage);
                 params.append('size',this.pageSize);
-                axios.post('http://localhost:8080/user/getLinkHistoryByPage',params)
+                axios.post(global.path+'/user/getLinkHistoryByPage',params)
                     .then(res => {
                         this.tableData = res.data.data.content;
                         this.total = res.data.data.totalElements;

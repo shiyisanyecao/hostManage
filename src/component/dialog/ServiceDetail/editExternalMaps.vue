@@ -17,6 +17,7 @@
     </div>
 </template>
 <script>
+    import global from '../../../global.vue'
     import axios from 'axios'
     export default {
         data() {
@@ -42,7 +43,7 @@
                 params.append('ip',this.externalmaps.ip);
                 params.append('port',this.externalmaps.port);
                 params.append('id',this.externalmaps.id);
-                axios.post('http://localhost:8080/externalMap/updateExternalMap',params)
+                axios.post(global.path+'/externalMap/updateExternalMap',params)
                     .then((res)=>{
                     if(res.data == 1) {
                     this.editExternalMaps.status = false;

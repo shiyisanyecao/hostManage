@@ -21,6 +21,7 @@
 </template>
 
 <script>
+    import global from '../../../global.vue'
     import axios from 'axios'
     export default {
         data() {
@@ -36,20 +37,23 @@
         },
         methods: {
             deleteCommit(id) {
-                console.log(id,'=-=-=--=-=-=')
                 let params = new URLSearchParams();
                 params.append('activeUserHostAccessId',id);
-                axios.post('http://localhost:8080/service/brokenLink',params)
+                axios.post(global.path+'/service/brokenLink',params)
                     .then(res => {
-                        console.log(res,'==--==--=')
+                        if(res.data) {
+                            this.$alert('断开成功');
+                            this.$emit('borken','');
+                } else {
+                            this.$alert('断开失败')
+                }
                 })
             },
             unConnect(row) {
-                console.log(row,'==--==---==')
                 this.$alert('确定断开吗','',{
                     confirmButtonText: '确定',
                     callback: () => {
-                    this.deleteCommit(row.id)
+                    this.deleteCommit(row.id);
                 }
                 })
             },

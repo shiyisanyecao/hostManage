@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import global from '../../global.vue';
 require('!style-loader!css-loader!./index.css')
 import axios from 'axios'
 export default {

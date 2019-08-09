@@ -27,6 +27,7 @@
 </template>
 
 <script>
+    import global from '../../global.vue'
     import axios from 'axios';
     export default {
         data() {
@@ -55,7 +56,7 @@
                 let params = new URLSearchParams();
                 params.append('size',this.pageSize);
                 params.append('page',this.currentPage);
-                axios.post('http://localhost:8080/activeUserHostAccess/getCurrentLinkingByPage',params)
+                axios.post(global.path+'/activeUserHostAccess/getCurrentLinkingByPage',params)
                     .then(res => {
                         this.tableData = res.data.content;
                 })
